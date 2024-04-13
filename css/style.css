@@ -84,7 +84,69 @@ body {
     
 }
 
-.tasks ul li:hover {
-    scale: 1.1;
-    box-shadow: 0px 2px 4px rgb(170, 170, 170);
+rightTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+rightTask i {
+    color: gray;
+}
+
+rightTask > *:hover {
+    cursor: pointer;
+}
+
+.fullTasks, .emptyTask {
+    display: none;
+    position: absolute;
+    width: 100svw;
+    height: 100svh;
+    place-content: center;
+    background-color: rgba(0, 0, 0, 0.281);
+}
+
+.fullTasksContainer, .emptyTaskContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: white;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.fullTasksContainer #closeFullTasks, .emptyTaskContainer #closeEmptyTask {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@keyframes appearPopUp {
+    0% {
+        opacity: 0;
+        transform: rotate(3deg);
+
+    }
+
+    50% {
+        transform: rotate(-3deg);
+
+    }
+    
+    75% {
+        transform: rotate(3deg);
+    }
+
+
+    100% {
+        opacity: 1;
+    }
 }
