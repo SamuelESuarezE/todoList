@@ -12,14 +12,14 @@ const emptyTaskContainer = document.querySelector('.emptyTaskContainer')
 
 
 // ADD A TASK
-inputTaskAdd.addEventListener("click", addTask);
-closeFullTasks.addEventListener('click', () => {
+inputTaskAdd.onclick = addTask;
+closeFullTasks.onclick = () => {
     fullTasks.style.display = 'none';
-})
+}
 
-closeEmptyTask.addEventListener('click', () => {
+closeEmptyTask.onclick = () => {
     emptyTask.style.display = 'none';
-})
+}
 
 function addTask() {
     if (inputTaskName.value === "") {
@@ -36,7 +36,7 @@ function addTask() {
     let taskElement = document.createElement('li')
     taskElement.innerHTML += `${inputTaskName.value} <rightTask><i class="bi bi-trash-fill" onclick=";"></i><input type="checkbox" name="" id=""></input></rightTask></li>`
     tasksContainer.appendChild(taskElement)
-    taskElement.children[0].children[0].addEventListener('click', () => {
+    taskElement.children[0].children[0].onclick = () => {
         
         taskElement.style.animation = 'disappearTask 0.4s'
 
@@ -45,9 +45,7 @@ function addTask() {
             taskElement.remove();
         }, 400)
         
-    })
+    }
     inputTaskName.value = "";
-    console.log()
-
 };
 
