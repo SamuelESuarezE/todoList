@@ -1,5 +1,6 @@
 "use strict";
 
+// DOM
 const tasksContainer = document.querySelector(".tasksUl");
 const inputTaskName = document.querySelector("#nombreTarea");
 const inputTaskAdd = document.querySelector("#addTask");
@@ -10,6 +11,7 @@ const emptyTask = document.querySelector('.emptyTask')
 const emptyTaskContainer = document.querySelector('.emptyTaskContainer')
 
 
+// ADD A TASK
 inputTaskAdd.addEventListener("click", addTask);
 closeFullTasks.addEventListener('click', () => {
     fullTasks.style.display = 'none';
@@ -31,9 +33,21 @@ function addTask() {
         fullTasksContainer.style.animation = 'appearPopUp 0.4s'
         return
     }
-   
-    tasksContainer.innerHTML += `<li>${inputTaskName.value} <rightTask><i class="bi bi-trash-fill" class="removeTask"></i><input type="checkbox" name="" id=""></rightTask></li>`;
-    inputTaskName.value = "";
+    let taskElement = document.createElement('li')
+    taskElement.innerHTML += `${inputTaskName.value} <rightTask><i class="bi bi-trash-fill" onclick=";"></i><input type="checkbox" name="" id=""></input></rightTask></li>`
+    tasksContainer.appendChild(taskElement)
+    taskElement.children[0].children[0].addEventListener('click', () => {
+        
+        taskElement.style.animation = 'disappearTask 0.4s'
 
+        setTimeout(function() {
+            // Eliminar el elemento del DOM
+            taskElement.remove();
+        }, 400)
+        
+    })
+    inputTaskName.value = "";
+    console.log()
 
 };
+
