@@ -13,6 +13,14 @@ const emptyTaskContainer = document.querySelector('.emptyTaskContainer')
 
 // ADD A TASK
 inputTaskAdd.onclick = addTask;
+
+// Add event listener for Enter key press in the input field
+inputTaskName.addEventListener("keydown", function(event) {
+    if (event.keyCode === 13 && document.activeElement === inputTaskName) { // Check for Enter key and focus on inputTaskName
+      addTask();
+    }
+  });
+
 closeFullTasks.onclick = () => {
     fullTasks.style.display = 'none';
 }
